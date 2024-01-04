@@ -1,0 +1,11 @@
+#EXTM3U
+#EXTINF:-1 ,CH-1
+https://gcalic.v.mycdn.com/gc/yxhcnh_1/index.m3u8
+#EXTINF:-1 ,CH-2
+https://gccncc.v.wdns.com/gc/yxyt_1/index.m3u8
+#EXTINF:-1 ,CH-3
+https://gccncc.v.wscs.com/gc/wygjt2_1/index.m3u8
+#EXTINF:-1 ,CH-4
+https://gcalic.v.myicdn.com/gc/hswf_1/index.m3u8
+CH-5, https://gcalic.v.myicdn.com/gc/hswf_1/index.m3u8
+CH-6, https://gcalic.v.myicdn.com/gc/hswf_1/index.m3u8
