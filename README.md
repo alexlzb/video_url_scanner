@@ -1,4 +1,4 @@
-# video_url_scanner - scan video url in a file, and generate report with image capture
+# video_url_scanner - scan video url; generate report with image captures
 Scan video url from file and create report, including url availability, thumbnail
 
 Broadcast video, OTT(Video over the top),  Internet video, video surveillance(IPC), video AI(Object detection) rely on video signals, properly set up.
