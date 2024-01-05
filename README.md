@@ -1,7 +1,7 @@
-# video_url_scanner - scan video url; generate report with image captures
+# video_url_scanner - scan video URLs, generate report with image captures
 Scan video url from file and create report, including url availability, thumbnail
 
-Broadcast video, OTT(Video over the top),  Internet video, video surveillance(IPC), video AI(Object detection) rely on video signals, properly set up.
+Broadcast video, OTT(Video over the top),  Internet video, video surveillance(IPCamera), video AI(Object detection) rely on video signals, properly set up.
 
 Q: If you need to deal with many video sources, what is the first step?</br>
 A: Verify video information. 
@@ -21,7 +21,7 @@ This is what video_url_scanner is designed for.
 # Design information
 * video_url_scanner is a small tool. It takes video urls in text file and generate report with image capture.
 * It supports video url in http://, https://, rtsp://, rtmp://. udp://, srt:// and more will be supported soon.
-* Only two files - main program and package requirement. 
+* Only one file - video_url_scanner.py - the main program. 
 
 
 # Installation
@@ -29,7 +29,7 @@ This is what video_url_scanner is designed for.
 First, install python3 (>3.8), pip and OpenCV</br>
 Check requirements.txt if any package is missing.
 
-Second, save files to local folder. 
+Second, save files to a local folder. 
 * video_url_scanner.py - main program
 * sample.txt - use to demo program functions
 
@@ -38,7 +38,7 @@ Second, save files to local folder.
 
 python should be included in PATH environment. (python3 may be default in Linux)
 
-Assume user has opened CLI window.
+Assume user has opened a console window (windows or linux).
 
 ## Inspect video url in file.
 This confirms if user should run actual scan on the file.
@@ -97,20 +97,30 @@ Line:   10 [url] ooo https://gcalic.v.myicdn.com/gc/hswf_1/index.m3u8</br>
                        * Results: {"IP": "16.19.12.98", "Tc": 12, "Width": 1920, "Height": 1080, "fps": 25.0}  </br>
 (Above outputs are modified)
 
-ooo means the url contains valid video; the next line is video info.</br>
-xxx means the url has problem to access; the next line is error message.
-
-
 After scan is done, output files are shown, like below:
-
 
 Report file: sample-0105000342-rpt.html</br>
 Packing into zip file ...sample-0105000342.zip</br>
 Zip file: sample-0105000342.zip</br>
 
-
 These files are in a new folder under current one.
 
+
+### How to read results
+--- means the line is considered as text.<br/>
+ooo means the url contains valid video; the next line is video info.</br>
+xxx means the url has problem to access; the next line is error message.</br>
+"IP" - server IP; If server in url is domain name, server IP is from DNS or hosts in local.</br>
+"Tc" - connection time, in million second. This is duration of TCP socket connection.</br>
+"Width", "Height", "fps" - are basic infomation of video source.
+
+ooo or xxx gives your idea if an url is valid. If xxx, result may be 'Failed to open url' or 'Can not connect to socket'.</br>
+'Failed to open url' means server is online, but access is failed.</br>
+'Can not connect to socket' means server is not accessible in socket level - no DNS, wrong IP, wrong port etc.</br>
+
+"IP" is how server name is resolved by DNS from view of this machine.</br>
+"Tc" gives your idea of how fast can connect to the server from this machine.</br>
+"Width", "Height", "fps" allow you to verify if video signal settings accord to record.</br>
 
 
 ## Next step
@@ -121,6 +131,15 @@ download zip file to local machine; extract zip file and open the html file insi
 
 In web browser, report can be printed as "Save to PDF".
 
+### How to use report
+* Send to owner of video signals. Ask him/her to fix problems. - for IP cameras
+* Pick good video sources. - for free Internet video
+* Check settings of video sources. - if you are a video owner
+* Send to big boss and blame some one :)
+
+TIP: If want to know how stable video signals are, you can run scan multiple times.</br>
+By comparing with reports in differnt machines(professionaly, should call probe) and different time,
+more insights may be discovered.
 
 
 ## Screenshots
