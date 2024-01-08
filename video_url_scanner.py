@@ -13,6 +13,7 @@ import json
 import socket
 import zipfile
 import argparse
+import platform
 from datetime import datetime
 from urllib.parse import urlparse
 
@@ -173,7 +174,11 @@ if __name__ == '__main__':
         if(action_flag):
             os.makedirs(prefix)
             os.chdir(prefix)
-            os.system('cp %s %s'%(full_fn, input_fn))
+            # COPY command by OS
+            if(platform.system() == 'Windows'):
+                os.system('copy %s %s'%(full_fn, input_fn))
+            else:          
+                os.system('cp %s %s'%(full_fn, input_fn))
 
         fi = open(input_fn, 'r', encoding='utf-8')
         zipList = []
